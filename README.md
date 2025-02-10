@@ -62,7 +62,7 @@ It allows individuals or organizations to set up a decentralized platform to rec
     forge script script/DeployFundMe.s.sol:DeployFundMe --rpc-url <your_rpc_url> --private-key <your_private_key>
     ```
 
-    OR run this is you have encrypted your private key and have a keystore
+    OR run this if you have encrypted your private key and have a keystore
 
     ```bash
     forge script script/DeployFundMe.s.sol:DeployFundMe --rpc-url <your_rpc_url> --account <your_keystore_account_name>
@@ -77,7 +77,7 @@ Run the following command to see available options:
 make help
 ```
 
-# Useful Commands
+### Useful Commands
 - Deploy the Contract:
 
 ```bash
