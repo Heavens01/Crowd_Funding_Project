@@ -35,10 +35,7 @@ contract FundMeTest is Test {
         console.log("This is the deployed fundMe address", address(fundMe));
         console.log("This is the FundMeTest address", address(this));
         console.log("This is Me", msg.sender);
-        console.log(
-            "This is the deployed fundMe OWNER address",
-            fundMe.getOwner()
-        );
+        console.log("This is the deployed fundMe OWNER address", fundMe.getOwner());
     }
 
     function testPricefeedVersionIsAccurate() public view {
@@ -90,21 +87,14 @@ contract FundMeTest is Test {
         uint256 endingBalanceOfOwner = fundMe.getOwner().balance;
         uint256 endingBalanceOfFundMe = address(fundMe).balance;
         assertEq(endingBalanceOfFundMe, 0);
-        assertEq(
-            startingBalanceOfOwner + startingBalanceOfFundMe,
-            endingBalanceOfOwner
-        );
+        assertEq(startingBalanceOfOwner + startingBalanceOfFundMe, endingBalanceOfOwner);
     }
 
     function testWithdrawFromMultipleFunderscheaper() public funded {
         // Arrange
         uint160 numberOfFunders = 10;
         uint160 startingFunderIndex = 1;
-        for (
-            uint160 i = startingFunderIndex;
-            i < numberOfFunders + startingFunderIndex;
-            i++
-        ) {
+        for (uint160 i = startingFunderIndex; i < numberOfFunders + startingFunderIndex; i++) {
             // hoax keyword = (deal and prank) at the same  time
             hoax(address(i), STARTING_BALANCE);
             fundMe.fund{value: SEND_VALUE}();
@@ -121,25 +111,15 @@ contract FundMeTest is Test {
         uint256 endingBalanceOfOwner = fundMe.getOwner().balance;
         uint256 endingBalanceOfFundMe = address(fundMe).balance;
         assertEq(endingBalanceOfFundMe, 0);
-        assertEq(
-            startingBalanceOfOwner + startingBalanceOfFundMe,
-            endingBalanceOfOwner
-        );
-        assert(
-            (numberOfFunders + 1) * SEND_VALUE ==
-                endingBalanceOfOwner - startingBalanceOfOwner
-        );
+        assertEq(startingBalanceOfOwner + startingBalanceOfFundMe, endingBalanceOfOwner);
+        assert((numberOfFunders + 1) * SEND_VALUE == endingBalanceOfOwner - startingBalanceOfOwner);
     }
 
     function testWithdrawFromMultipleFunders() public funded {
         // Arrange
         uint160 numberOfFunders = 10;
         uint160 startingFunderIndex = 1;
-        for (
-            uint160 i = startingFunderIndex;
-            i < numberOfFunders + startingFunderIndex;
-            i++
-        ) {
+        for (uint160 i = startingFunderIndex; i < numberOfFunders + startingFunderIndex; i++) {
             // hoax keyword = (deal and prank) at the same  time
             hoax(address(i), STARTING_BALANCE);
             fundMe.fund{value: SEND_VALUE}();
@@ -156,14 +136,8 @@ contract FundMeTest is Test {
         uint256 endingBalanceOfOwner = fundMe.getOwner().balance;
         uint256 endingBalanceOfFundMe = address(fundMe).balance;
         assertEq(endingBalanceOfFundMe, 0);
-        assertEq(
-            startingBalanceOfOwner + startingBalanceOfFundMe,
-            endingBalanceOfOwner
-        );
-        assert(
-            (numberOfFunders + 1) * SEND_VALUE ==
-                endingBalanceOfOwner - startingBalanceOfOwner
-        );
+        assertEq(startingBalanceOfOwner + startingBalanceOfFundMe, endingBalanceOfOwner);
+        assert((numberOfFunders + 1) * SEND_VALUE == endingBalanceOfOwner - startingBalanceOfOwner);
     }
 
     function testPrintStorageData() public view {

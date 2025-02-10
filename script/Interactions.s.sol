@@ -10,10 +10,7 @@ contract FundFundMe is Script {
     uint256 constant SEND_VALUE = 0.01 ether; // Same as 1e16
 
     function run() external {
-        address mostRecentlyDeployed = DevOpsTools.get_most_recent_deployment(
-            "FundMe",
-            block.chainid
-        );
+        address mostRecentlyDeployed = DevOpsTools.get_most_recent_deployment("FundMe", block.chainid);
 
         fundFundMe(mostRecentlyDeployed);
     }
@@ -31,10 +28,7 @@ contract WithdrawFundMe is Script {
     uint256 constant SEND_VALUE = 0.01 ether; // Same as 1e16
 
     function run() external {
-        address mostRecentlyDeployed = DevOpsTools.get_most_recent_deployment(
-            "FundMe",
-            block.chainid
-        );
+        address mostRecentlyDeployed = DevOpsTools.get_most_recent_deployment("FundMe", block.chainid);
 
         withdrawFundMe(mostRecentlyDeployed);
     }
