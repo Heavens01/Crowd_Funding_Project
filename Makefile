@@ -7,6 +7,39 @@ DEFAULT_ZKSYNC_LOCAL_KEY := 0x7726827caac94a7f9e1b160f7ea819f172f7b6f9d2a97f992c
 
 all: clean remove install update build
 
+# Read Help
+help:
+	@echo "Available make commands:"
+	@echo ""
+	@echo "General Commands:"
+	@echo "  make all          - Clean, remove modules, install dependencies, update, and build the project."
+	@echo "  make clean        - Remove build artifacts."
+	@echo "  make remove       - Remove git submodules and related files."
+	@echo "  make install      - Install required dependencies."
+	@echo "  make update       - Update dependencies."
+	@echo "  make build        - Compile the project."
+	@echo "  make zkbuild      - Compile the project for zkSync."
+	@echo "  make format       - Format Solidity files using Foundry."
+	@echo "  make snapshot     - Generate a test snapshot."
+	@echo ""
+	@echo "Testing & Development:"
+	@echo "  make test         - Run all tests."
+	@echo "  make zktest       - Run tests on zkSync."
+	@echo "  make anvil        - Start Anvil (local Ethereum testnet)."
+	@echo "  make zk-anvil     - Start zkSync Anvil testnet."
+	@echo ""
+	@echo "Deployment Commands:"
+	@echo "  make deploy       - Deploy FundMe contract to local network."
+	@echo "  make deploy-sepolia - Deploy FundMe contract to Sepolia."
+	@echo "  make deploy-zk    - Deploy FundMe contract to zkSync local network."
+	@echo "  make deploy-zk-sepolia - Deploy FundMe contract to zkSync Sepolia."
+	@echo ""
+	@echo "Interaction Commands:"
+	@echo "  make fund         - Fund the deployed contract."
+	@echo "  make withdraw     - Withdraw funds from the deployed contract."
+	@echo ""
+	@echo "Run 'make <command>' to execute a specific command."
+
 # Clean the repo
 clean  :; forge clean
 
